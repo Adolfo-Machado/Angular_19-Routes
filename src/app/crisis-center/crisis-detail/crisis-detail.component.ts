@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -7,7 +9,8 @@ import { DialogService } from '../../services/dialog.service';
 
 @Component({
     selector: 'app-crisis-detail',
-    standalone: false,
+    // standalone: false,
+    imports: [FormsModule, CommonModule],
     template: `
         <div *ngIf="crisis">
             <h3>{{ editName }}</h3>

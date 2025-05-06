@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-crisis-center-home',
-    standalone: false,
+    // standalone: false,
     template: `
         <h3>Welcome to the Crisis Center</h3>
     `,

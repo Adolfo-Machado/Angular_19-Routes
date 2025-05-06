@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { Observable, switchMap } from 'rxjs';
 
 import { CrisisService } from '../crisis.service';
 import { ICrisis } from '../model/ICrisis';
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
 
 @Component({
     selector: 'app-crisis-list',
-    standalone: false,
+    // standalone: false,
+    imports: [RouterModule, CommonModule],
     template: `
     <ul class="crises">
         <li *ngFor="let crisis of crises$ | async" [class.selected]="crisis.id === selectedId">

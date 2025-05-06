@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, map } from 'rxjs';
 
@@ -6,7 +7,8 @@ import { SelectivePreloadingStrategyService } from '../../services/selective-pre
 
 @Component({
     selector: 'app-admin-dashboard',
-    standalone: false,
+    // standalone: false,
+    imports: [CommonModule],
     template: `
         <h3>Dashboard</h3>
 

@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
     selector: 'app-admin',
-    standalone: false,
+    // standalone: false,
+    imports: [RouterModule],
     template: `
         <h2>Admin</h2>
         <nav>

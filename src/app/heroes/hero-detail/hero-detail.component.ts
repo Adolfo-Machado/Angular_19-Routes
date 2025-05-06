@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { Observable, switchMap } from 'rxjs';
 
 import { IHero } from '../model/IHero';
 import { HeroService } from '../hero.service';
 
 @Component({
     selector: 'app-hero-detail',
-    standalone: false,
+    // standalone: false,
+    imports: [FormsModule, CommonModule],
     template: `
         <h2>Heroes</h2>
         <div *ngIf="hero$ | async as hero">

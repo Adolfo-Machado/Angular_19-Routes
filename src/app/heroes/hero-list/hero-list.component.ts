@@ -1,15 +1,16 @@
 // TODO: Feature Componentized like CrisisCenter
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { Observable, switchMap } from 'rxjs';
 
 import { HeroService } from '../hero.service';
 import { IHero } from '../model/IHero';
 
 @Component({
     selector: 'app-hero-list',
-    standalone: false,
+    // standalone: false,
+    imports: [RouterModule, CommonModule],
     template: `
         <h2>Heroes</h2>
         <ul class="heroes">
