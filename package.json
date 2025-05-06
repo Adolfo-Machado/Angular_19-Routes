@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --port 480 -o",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
