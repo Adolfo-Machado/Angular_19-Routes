@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'app-compose-message',
-    standalone: false,
+    // standalone: false,
+    imports: [CommonModule, FormsModule],
     template: `
         <h3>Contact Crisis Center</h3>
         <div *ngIf="details">{{ details }}</div>

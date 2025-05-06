@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { NavigationExtras, Router } from '@angular/router';
+
 import { AuthService } from '../auth.service';
 
 @Component({
     selector: 'app-login',
-    standalone: false,
+    // standalone: false,
+    imports: [CommonModule],
     template: `
         <h2>Login</h2>
         <p>{{message}}</p>
