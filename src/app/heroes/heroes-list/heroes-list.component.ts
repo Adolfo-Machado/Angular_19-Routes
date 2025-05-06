@@ -8,7 +8,7 @@ import { HeroService } from '../hero.service';
 import { IHero } from '../model/IHero';
 
 @Component({
-    selector: 'app-hero-list',
+    selector: 'app-heroes-list',
     // standalone: false,
     imports: [RouterModule, CommonModule],
     template: `
@@ -22,9 +22,9 @@ import { IHero } from '../model/IHero';
         </ul>
         <button type="button" routerLink="/sidekicks">Go to sidekicks</button>
     `,
-    styleUrls: ['./hero-list.component.css'],
+    styleUrls: ['./heroes-list.component.css'],
 })
-export class HeroListComponent implements OnInit {
+export class HeroesListComponent implements OnInit {
     heroes$!: Observable<IHero[]>;
     selectedId = 0;
 
