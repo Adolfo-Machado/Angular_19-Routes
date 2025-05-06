@@ -7,9 +7,10 @@ import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-crisis-list',
-  templateUrl: './crisis-list.component.html',
-  styleUrls: ['./crisis-list.component.css']
+    selector: 'app-crisis-list',
+    templateUrl: './crisis-list.component.html',
+    styleUrls: ['./crisis-list.component.css'],
+    standalone: false
 })
 export class CrisisListComponent implements OnInit {
   crises$?: Observable<Crisis[]>;

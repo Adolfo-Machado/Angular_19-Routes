@@ -6,9 +6,10 @@ import { Crisis } from '../crisis';
 import { DialogService } from '../../dialog.service';
 
 @Component({
-  selector: 'app-crisis-detail',
-  templateUrl: './crisis-detail.component.html',
-  styleUrls: ['./crisis-detail.component.css']
+    selector: 'app-crisis-detail',
+    templateUrl: './crisis-detail.component.html',
+    styleUrls: ['./crisis-detail.component.css'],
+    standalone: false
 })
 export class CrisisDetailComponent implements OnInit {
   crisis!: Crisis;
