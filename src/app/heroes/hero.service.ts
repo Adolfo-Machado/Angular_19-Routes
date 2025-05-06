@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 
 import { IHero } from './model/IHero';
 import { HEROES } from './mock-heroes';
-import { MessageService } from '../message.service';
+import { MessageService } from '../services/message.service';
 
 @Injectable({
     providedIn: 'root',
