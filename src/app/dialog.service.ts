@@ -7,16 +7,16 @@ import { Observable, of } from 'rxjs';
  * TODO: better modal implementation that doesn't use window.confirm
  */
 @Injectable({
-  providedIn: 'root',
+    providedIn: 'root',
 })
 export class DialogService {
-  /**
-   * Ask user to confirm an action. `message` explains the action and choices.
-   * Returns observable resolving to `true`=confirm or `false`=cancel
-   */
-  confirm(message?: string): Observable<boolean> {
-    const confirmation = window.confirm(message || 'Is it OK?');
+    /**
+     * Ask user to confirm an action. `message` explains the action and choices.
+     * Returns observable resolving to `true`=confirm or `false`=cancel
+     */
+    confirm(message?: string): Observable<boolean> {
+        const confirmation = window.confirm(message || 'Is it OK?');
 
-    return of(confirmation);
-  }
+        return of(confirmation);
+    }
 }

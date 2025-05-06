@@ -2,9 +2,18 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-admin',
-    templateUrl: './admin.component.html',
+    standalone: false,
+    template: `
+        <h2>Admin</h2>
+        <nav>
+            <a routerLink="./" routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }" ariaCurrentWhenActive="page">Dashboard</a>
+            <a routerLink="./crises" routerLinkActive="active" ariaCurrentWhenActive="page">Manage Crises</a>
+            <a routerLink="./heroes" routerLinkActive="active" ariaCurrentWhenActive="page">Manage Heroes</a>
+        </nav>
+        <router-outlet></router-outlet>
+    `,
     styleUrls: ['./admin.component.css'],
-    standalone: false
 })
 export class AdminComponent {
 }

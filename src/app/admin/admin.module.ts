@@ -9,15 +9,15 @@ import { ManageHeroesComponent } from './manage-heroes/manage-heroes.component';
 import { AdminRoutingModule } from './admin-routing.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    AdminRoutingModule
-  ],
-  declarations: [
-    AdminComponent,
-    AdminDashboardComponent,
-    ManageCrisesComponent,
-    ManageHeroesComponent
-  ]
+    imports: [
+        CommonModule,
+        AdminRoutingModule
+    ],
+    declarations: [
+        AdminComponent,
+        AdminDashboardComponent,
+        ManageCrisesComponent,
+        ManageHeroesComponent
+    ]
 })
-export class AdminModule {}
+export class AdminModule { }

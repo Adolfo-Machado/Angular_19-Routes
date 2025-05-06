@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-manage-heroes',
-    templateUrl: './manage-heroes.component.html',
-    styleUrls: ['./manage-heroes.component.css'],
-    standalone: false
+    standalone: false,
+    template: `
+        <p>Manage your heroes here</p>
+    `,
 })
 export class ManageHeroesComponent { }

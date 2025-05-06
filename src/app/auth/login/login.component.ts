@@ -4,46 +4,52 @@ import { AuthService } from '../auth.service';
 
 @Component({
     selector: 'app-login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css'],
-    standalone: false
+    standalone: false,
+    template: `
+        <h2>Login</h2>
+        <p>{{message}}</p>
+        <p>
+            <button type="button" (click)="login()"  *ngIf="!authService.isLoggedIn">Login</button>
+            <button type="button" (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
+        </p>
+    `,
 })
 export class LoginComponent {
-  message: string;
+    message: string;
 
-  constructor(public authService: AuthService, public router: Router) {
-    this.message = this.getMessage();
-  }
+    constructor(public authService: AuthService, public router: Router) {
+        this.message = this.getMessage();
+    }
 
-  getMessage() {
-    return 'Logged ' + (this.authService.isLoggedIn ? 'in' : 'out');
-  }
+    getMessage() {
+        return 'Logged ' + (this.authService.isLoggedIn ? 'in' : 'out');
+    }
 
-  login() {
-    this.message = 'Trying to log in ...';
+    login() {
+        this.message = 'Trying to log in ...';
 
-    this.authService.login().subscribe(() => {
-      this.message = this.getMessage();
-      if (this.authService.isLoggedIn) {
-        // Usually you would use the redirect URL from the auth service.
-        // However to keep the example simple, we will always redirect to `/admin`.
-        const redirectUrl = '/admin';
+        this.authService.login().subscribe(() => {
+            this.message = this.getMessage();
+            if (this.authService.isLoggedIn) {
+                // Usually you would use the redirect URL from the auth service.
+                // However to keep the example simple, we will always redirect to `/admin`.
+                const redirectUrl = '/admin';
 
-        // Set our navigation extras object
-        // that passes on our global query params and fragment
-        const navigationExtras: NavigationExtras = {
-          queryParamsHandling: 'preserve',
-          preserveFragment: true
-        };
+                // Set our navigation extras object
+                // that passes on our global query params and fragment
+                const navigationExtras: NavigationExtras = {
+                    queryParamsHandling: 'preserve',
+                    preserveFragment: true
+                };
 
-        // Redirect the user
-        this.router.navigate([redirectUrl], navigationExtras);
-      }
-    });
-  }
+                // Redirect the user
+                this.router.navigate([redirectUrl], navigationExtras);
+            }
+        });
+    }
 
-  logout() {
-    this.authService.logout();
-    this.message = this.getMessage();
-  }
+    logout() {
+        this.authService.logout();
+        this.message = this.getMessage();
+    }
 }

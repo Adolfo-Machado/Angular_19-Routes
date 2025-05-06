@@ -8,37 +8,37 @@ import { authGuard } from './auth/auth.guard';
 import { SelectivePreloadingStrategyService } from './selective-preloading-strategy.service';
 
 const appRoutes: Routes = [
-  {
-    path: 'compose',
-    component: ComposeMessageComponent,
-    outlet: 'popup'
-  },
-  {
-    path: 'admin',
-    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
-    canMatch: [authGuard]
-  },
-  {
-    path: 'crisis-center',
-    loadChildren: () => import('./crisis-center/crisis-center.module').then(m => m.CrisisCenterModule),
-    data: { preload: true }
-  },
-  { path: '',   redirectTo: '/superheroes', pathMatch: 'full' },
-  { path: '**', component: PageNotFoundComponent }
+    {
+        path: 'compose',
+        component: ComposeMessageComponent,
+        outlet: 'popup'
+    },
+    {
+        path: 'admin',
+        loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
+        canMatch: [authGuard]
+    },
+    {
+        path: 'crisis-center',
+        loadChildren: () => import('./crisis-center/crisis-center.module').then(m => m.CrisisCenterModule),
+        data: { preload: true }
+    },
+    { path: '', redirectTo: '/superheroes', pathMatch: 'full' },
+    { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(
-      appRoutes,
-      {
-        enableTracing: false, // <-- debugging purposes only
-        preloadingStrategy: SelectivePreloadingStrategyService,
-      }
-    )
-  ],
-  exports: [
-    RouterModule
-  ]
+    imports: [
+        RouterModule.forRoot(
+            appRoutes,
+            {
+                enableTracing: false, // <-- debugging purposes only
+                preloadingStrategy: SelectivePreloadingStrategyService,
+            }
+        )
+    ],
+    exports: [
+        RouterModule
+    ]
 })
 export class AppRoutingModule { }

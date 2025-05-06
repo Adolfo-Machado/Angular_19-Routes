@@ -9,30 +9,30 @@ import { ManageHeroesComponent } from './manage-heroes/manage-heroes.component';
 import { authGuard } from '../auth/auth.guard';
 
 const adminRoutes: Routes = [
-  {
-    path: '',
-    component: AdminComponent,
-    canActivate: [authGuard],
-    children: [
-      {
+    {
         path: '',
-        canActivateChild: [authGuard],
+        component: AdminComponent,
+        canActivate: [authGuard],
         children: [
-          { path: 'crises', component: ManageCrisesComponent },
-          { path: 'heroes', component: ManageHeroesComponent },
-          { path: '', component: AdminDashboardComponent }
+            {
+                path: '',
+                canActivateChild: [authGuard],
+                children: [
+                    { path: 'crises', component: ManageCrisesComponent },
+                    { path: 'heroes', component: ManageHeroesComponent },
+                    { path: '', component: AdminDashboardComponent }
+                ]
+            }
         ]
-      }
-    ]
-  }
+    }
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forChild(adminRoutes)
-  ],
-  exports: [
-    RouterModule
-  ]
+    imports: [
+        RouterModule.forChild(adminRoutes)
+    ],
+    exports: [
+        RouterModule
+    ]
 })
-export class AdminRoutingModule {}
+export class AdminRoutingModule { }

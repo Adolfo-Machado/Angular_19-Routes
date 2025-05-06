@@ -10,38 +10,38 @@ import { canDeactivateGuard } from '../can-deactivate.guard';
 import { crisisDetailResolver } from './crisis-detail-resolver';
 
 const crisisCenterRoutes: Routes = [
-  {
-    path: '',
-    component: CrisisCenterComponent,
-    children: [
-      {
+    {
         path: '',
-        component: CrisisListComponent,
+        component: CrisisCenterComponent,
         children: [
-          {
-            path: ':id',
-            component: CrisisDetailComponent,
-            canDeactivate: [canDeactivateGuard],
-            resolve: {
-              crisis: crisisDetailResolver
+            {
+                path: '',
+                component: CrisisListComponent,
+                children: [
+                    {
+                        path: ':id',
+                        component: CrisisDetailComponent,
+                        canDeactivate: [canDeactivateGuard],
+                        resolve: {
+                            crisis: crisisDetailResolver
+                        }
+                    },
+                    {
+                        path: '',
+                        component: CrisisCenterHomeComponent
+                    }
+                ]
             }
-          },
-          {
-            path: '',
-            component: CrisisCenterHomeComponent
-          }
         ]
-      }
-    ]
-  }
+    }
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forChild(crisisCenterRoutes)
-  ],
-  exports: [
-    RouterModule
-  ]
+    imports: [
+        RouterModule.forChild(crisisCenterRoutes)
+    ],
+    exports: [
+        RouterModule
+    ]
 })
 export class CrisisCenterRoutingModule { }

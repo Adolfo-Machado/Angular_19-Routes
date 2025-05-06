@@ -3,34 +3,56 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'app-compose-message',
-    templateUrl: './compose-message.component.html',
-    styleUrls: ['./compose-message.component.css'],
-    standalone: false
+    standalone: false,
+    template: `
+        <h3>Contact Crisis Center</h3>
+        <div *ngIf="details">{{ details }}</div>
+        <div>
+            <div>
+                <label for="message">Enter your message: </label>
+            </div>
+            <div>
+                <textarea id="message" [(ngModel)]="message" rows="10" cols="35" [disabled]="sending"></textarea>
+            </div>
+        </div>
+        <p *ngIf="!sending">
+            <button type="button" (click)="send()">Send</button>
+            <button type="button" (click)="cancel()">Cancel</button>
+        </p>
+    `,
+    styles: `
+        textarea {
+            width: 100%;
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            box-sizing: border-box;
+        }
+    `
 })
 export class ComposeMessageComponent {
-  details = '';
-  message = '';
-  sending = false;
+    details = '';
+    message = '';
+    sending = false;
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+    constructor(private router: Router, private route: ActivatedRoute) { }
 
-  send() {
-    this.sending = true;
-    this.details = 'Sending Message...';
+    send() {
+        this.sending = true;
+        this.details = 'Sending Message...';
 
-    setTimeout(() => {
-      this.sending = false;
-      this.closePopup();
-    }, 1000);
-  }
+        setTimeout(() => {
+            this.sending = false;
+            this.closePopup();
+        }, 1000);
+    }
 
-  cancel() {
-    this.closePopup();
-  }
+    cancel() {
+        this.closePopup();
+    }
 
-  closePopup() {
-    // Providing a `null` value to the named outlet
-    // clears the contents of the named outlet
-    this.router.navigate([{outlets: {popup: null}}], {relativeTo: this.route.parent});
-  }
+    closePopup() {
+        // Providing a `null` value to the named outlet
+        // clears the contents of the named outlet
+        this.router.navigate([{ outlets: { popup: null } }], { relativeTo: this.route.parent });
+    }
 }
