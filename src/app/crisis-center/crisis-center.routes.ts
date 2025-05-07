@@ -1,5 +1,4 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 
 import { CrisisCenterHomeComponent } from './crisis-center-home/crisis-center-home.component';
 import { CrisisListComponent } from './crisis-list/crisis-list.component';
@@ -9,7 +8,7 @@ import { CrisisDetailComponent } from './crisis-detail/crisis-detail.component';
 import { canDeactivateGuard } from '../services/can-deactivate.guard';
 import { crisisDetailResolver } from './crisis-detail-resolver';
 
-const crisisCenterRoutes: Routes = [
+export const CrisisCenterRoutes: Routes = [
     {
         path: '',
         component: CrisisCenterComponent,
@@ -22,9 +21,7 @@ const crisisCenterRoutes: Routes = [
                         path: ':id',
                         component: CrisisDetailComponent,
                         canDeactivate: [canDeactivateGuard],
-                        resolve: {
-                            crisis: crisisDetailResolver
-                        }
+                        resolve: {crisis: crisisDetailResolver}
                     },
                     {
                         path: '',
@@ -36,12 +33,3 @@ const crisisCenterRoutes: Routes = [
     }
 ];
 
-@NgModule({
-    imports: [
-        RouterModule.forChild(crisisCenterRoutes)
-    ],
-    exports: [
-        RouterModule
-    ]
-})
-export class CrisisCenterRoutingModule { }

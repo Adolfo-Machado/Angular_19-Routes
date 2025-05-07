@@ -9,7 +9,7 @@ import { IHero } from '../model/IHero';
 
 @Component({
     selector: 'app-heroes-list',
-    // standalone: false,
+    standalone: true,
     imports: [RouterModule, CommonModule],
     template: `
         <h2>Heroes</h2>
@@ -25,6 +25,7 @@ import { IHero } from '../model/IHero';
     styleUrls: ['./heroes-list.component.css'],
 })
 export class HeroesListComponent implements OnInit {
+
     heroes$!: Observable<IHero[]>;
     selectedId = 0;
 
@@ -36,7 +37,7 @@ export class HeroesListComponent implements OnInit {
     ngOnInit() {
         this.heroes$ = this.route.paramMap.pipe(
             switchMap(params => {
-                this.selectedId = Number(params.get('id')!);
+                this.selectedId = Number(params.get('id'));
                 return this.service.getHeroes();
             })
         );

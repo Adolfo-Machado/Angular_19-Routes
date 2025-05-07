@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
-
-import { AdminRoutingModule } from './admin-routing.module';
+import { RouterModule } from '@angular/router';
+import { AdminRoutes } from './admin.routes';
 
 @NgModule({
+    declarations: [],
     imports: [
-        AdminRoutingModule
-    ],
-    declarations: []
+        RouterModule.forChild(AdminRoutes)
+    ]
 })
 export class AdminModule { }

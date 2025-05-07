@@ -1,13 +1,11 @@
-// import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 
 import { ComposeMessageComponent } from './compose-message/compose-message.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { HeroDetailComponent } from './heroes/hero-detail/hero-detail.component';
 
 import { authGuard } from './auth/auth.guard';
-// import { SelectivePreloadingStrategyService } from './services/selective-preloading-strategy.service';
 
-// const appRoutes: Routes = [
 export const appRoutes: Routes = [
     {
         path: 'compose',
@@ -21,25 +19,24 @@ export const appRoutes: Routes = [
     },
     {
         path: 'crisis-center',
-        loadChildren: () => import('./crisis-center/crisis-center.module').then(m => m.CrisisCenterModule),
+        loadChildren: () => import('./crisis-center/crisis-center.routes').then(m => m.CrisisCenterRoutes),
         data: { preload: true }
     },
+    {
+        path: 'hero/:id',
+        component: HeroDetailComponent,
+        pathMatch: 'full'
+    },
+    {
+        path: 'superheroes',
+        loadChildren: () => import('./heroes/heroes.routes').then(m => m.HEROES_ROUTES),
+    },
+    {
+        path: 'login',
+        loadComponent: () => import('./auth/login/login.component').then(m => m.LoginComponent)
+    },
+
     { path: '', redirectTo: '/superheroes', pathMatch: 'full' },
     { path: '**', component: PageNotFoundComponent }
 ];
 
-// @NgModule({
-//     imports: [
-//         RouterModule.forRoot(
-//             appRoutes,
-//             {
-//                 enableTracing: false, // <-- debugging purposes only
-//                 preloadingStrategy: SelectivePreloadingStrategyService,
-//             }
-//         )
-//     ],
-//     exports: [
-//         RouterModule
-//     ]
-// })
-// export class AppRoutingModule { }

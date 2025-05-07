@@ -4,7 +4,7 @@ import { ChildrenOutletContexts, RouterModule } from '@angular/router';
 
 @Component({
     selector: 'app-root',
-    // standalone: false,
+    standalone: true,
     imports: [RouterModule ],
     templateUrl: 'app.component.html',
     styleUrls: ['app.component.css'],
