@@ -3,6 +3,7 @@ import { Router, NavigationExtras } from '@angular/router';
 import { AuthService } from './auth.service';
 
 export const authGuard = () => {
+
     const router = inject(Router);
     const authService = inject(AuthService);
 

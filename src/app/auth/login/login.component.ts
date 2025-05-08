@@ -18,9 +18,13 @@ import { AuthService } from '../auth.service';
     `,
 })
 export class LoginComponent {
+
     message: string;
 
-    constructor(public authService: AuthService, public router: Router) {
+    constructor(
+        public authService: AuthService,
+        public router: Router
+    ) {
         this.message = this.getMessage();
     }
 

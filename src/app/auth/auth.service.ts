@@ -7,10 +7,11 @@ import { tap, delay } from 'rxjs/operators';
     providedIn: 'root',
 })
 export class AuthService {
+
     isLoggedIn = false;
 
-    // store the URL so we can redirect after logging in
-    redirectUrl: string | null = null;
+    // // store the URL so we can redirect after logging in
+    // redirectUrl: string | null = null;
 
     login(): Observable<boolean> {
         return of(true).pipe(
